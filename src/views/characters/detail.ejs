@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head") %>
+
+<body>
+    <%- include("../partials/header") %>
+    <main>
+       <h1>Detalle</h1>
+        <div class="detalle">
+            <figure class="detalle-img">
+                <img src="/img/characters-img/<%=actor.imagen%>" alt="">
+            </figure>
+            <div class="detalle-ficha">
+                <p><strong>Nombre:</strong> <%=actor.nombre%></p>
+                <p><strong>Edad:</strong> <%=actor.edad%></p>
+                <p><strong>Peso (kilos):</strong> <%=actor.peso%></p>
+                <p><strong> Historia:</strong> <%=actor.historia%></p>
+                <p><strong>Películas asociadas</strong> </p> 
+                <%if (actor.Movies.length>0) {%>
+                <ul>
+                    <%actor.Movies.forEach(pelicula=>{%>
+                        <li><a href="/movies/<%=pelicula.id%>"><%=pelicula.titulo%></a></li>
+                    <%})%>
+                </ul>
+                <%}else {%>
+                    <p>No hay películas asociadas con el actor</p>
+                <%}%>    
+            </div>
+        </div>
+        <a href="/characters/<%=actor.id%>/edit"><button>Modificar actor</button> </a>
+        <form action="/characters/<%=actor.id%>?_method=delete" method="post">
+            <input type="submit" name="" id="" value="Eliminar actor">
+        </form>
+        <a href="/characters/"><button>Listado de actores</button> </a>
+
+        
+
+        
+    </main>
+    <%- include("../partials/footer") %>
+</body>
+</html>

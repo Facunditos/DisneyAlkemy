@@ -1,0 +1,44 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body{
+    margin-left: 20px;
+}
+ul{
+    list-style: none;
+}
+
+
+input, select{
+    margin: 5px 0px;
+    padding-left: 2px;
+}
+
+/* header */
+
+.cuenta-img img {
+    width: 50px;
+    margin-left: 9px;
+}
+#cuenta{
+    margin-top: -14px;
+}
+
+/* listas */
+.lista-general li{
+    padding: 20px 0px;
+}
+.lista-img img{
+    width: 50px;
+}
+
+/* detalles */
+.detalle{
+    display: flex;
+}
+
+.detalle-img img{
+    width: 140px;
+}

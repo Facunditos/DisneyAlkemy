@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head") %>
+
+<body>
+    <%- include("../partials/header") %>
+    <main>
+        <h1>Agregar actor</h1>
+        <form action="/characters/" method="post" enctype="multipart/form-data">
+            <label for="">Imagen</label>
+            <p><input type="file" name="imageCharacter" class="" id="" required></p>
+            <label for="">Nombre:</label>
+            <p><input type="text" name="nombre" class="" id="" required></p>
+            <label for="">Edad:</label>
+            <p><input type="number" name="edad" class="" id="" required></p>
+            <label for="">Peso:</label>
+            <p><input type="number" name="peso" class="" id="" step="0.1" required></p>
+            <label for="">Historia:</label>
+            <p><textarea name="historia" id=""  rows="5" required></textarea></p>
+            <label for="">Película 1:</label>
+            <p><select name="pelicula_id" class="" id="">
+                <%peliculas.forEach(pelicula=>{%>
+                <option value="<%=pelicula.id%>"><%=pelicula.titulo%></option>
+                <%})%>
+            </select></p>
+            <label for="">Película 2:</label>
+            <p><select name="pelicula_id" class="" id="">
+                <option value="">No agregar pelicula</option>
+                <%peliculas.forEach(pelicula=>{%>
+                <option value="<%=pelicula.id%>"><%=pelicula.titulo%></option>
+                <%})%>
+            </select></p>
+            <label for="">Película 3:</label>
+            <p><select name="pelicula_id" class="" id="">
+                <option value="">No agregar pelicula</option>
+                <%peliculas.forEach(pelicula=>{%>
+                <option value="<%=pelicula.id%>"><%=pelicula.titulo%></option>
+                <%})%>
+            </select></p>
+            <input type="submit" value="Agregar actor">  
+        </form>
+    </main>
+    <%- include("../partials/footer") %>
+</body>
+</html>

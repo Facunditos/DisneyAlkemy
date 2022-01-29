@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head") %>
+
+<body>
+    <%- include("../partials/header") %>
+    <main>
+        <h1>Agregar película</h1>
+        <form action="/movies/" method="post" enctype="multipart/form-data">
+            <label for="">Imagen</label>
+            <p><input type="file" name="imageMovie" class="" id="" required></p>
+            <label for="">Título:</label>
+            <p><input type="text" name="titulo" class="" id="" required></p>
+            <label for="">Fecha de creación:</label>
+            <p><input type="date" name="fecha_de_creacion" class="" id="" required></p>
+            <label for="">Calificación:</label>
+            <p><input type="number" name="calificacion" class="" id="" min="1" max="5" required></p>
+            <label for="">Género:</label>
+            <p><select name="genero_id" class="" id="">
+                <%generos.forEach(genero=>{%>
+                <option value="<%=genero.id%>"><%=genero.nombre%></option>
+                <%})%>
+            </select></p>
+            <input type="submit" value="Agregar película">  
+        </form>
+        <p><strong>Puedes asignar actores asociados a esta película desde el CRUD de actores</strong></p>
+        <p><strong>Si no encuentras el género de película requerido, puedas agregar un <a href="/genres/new">nuevo género</a></strong></p>
+    </main>
+    <%- include("../partials/footer") %>
+</body>
+</html>

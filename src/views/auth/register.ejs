@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head") %>
+
+<body>
+    <%- include("../partials/header") %>
+    <main>
+        <form action="/auth/register" method="post" >
+            <label for="">Nombre:</label>
+            <p><input type="text" name="nombre" class="" id="" required></p>
+            <label for="">Apellido:</label>
+            <p><input type="text" name="apellido" class="" id="" required></p>
+            <label for="">Email:</label>
+            <p><input type="email" name="email" class="" id="" required></p>
+            <label for="">Contraseña:</label>
+            <p><input type="password" name="contraseña" class="" id="" required></p>
+            <input type="submit" value="Registrarme">  
+        </form>
+    </main>
+    <%- include("../partials/footer") %>
+</body>
+</html>

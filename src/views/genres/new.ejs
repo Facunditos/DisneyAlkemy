@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head") %>
+
+<body>
+    <%- include("../partials/header") %>
+    <main>
+        <h1>Agregar genero</h1>
+        <form action="/genres/" method="post" enctype="multipart/form-data">
+            <label for="">Imagen</label>
+            <p><input type="file" name="imageGenre" class="" id="" required></p>
+            <label for="">Nombre:</label>
+            <p><input type="text" name="nombre" class="" id="" required></p>
+            <input type="submit" value="Agregar género">  
+        </form>
+        
+    </main>
+    <%- include("../partials/footer") %>
+</body>
+</html>

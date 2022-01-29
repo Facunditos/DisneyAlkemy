@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head") %>
+
+<body>
+    <%- include("../partials/header") %>
+    <main>
+       <h1>Detalle</h1>
+        <div class="detalle">
+            <figure class="detalle-img">
+                <img src="/img/movies-img/<%=pelicula.imagen%>" alt="">
+            </figure>
+            <div class="detalle-ficha">
+                <p><strong>Título:</strong> <%=pelicula.titulo%></p>
+                <p><strong>Fecha de creación:</strong> <%=pelicula.fecha_de_creacion%></p>
+                <p><strong>Calificación:</strong> <%=pelicula.calificacion%></p>
+                <p><strong> Genero:</strong> <%=pelicula.Genre.nombre%></p>
+                <p><strong>Actores</strong> </p> 
+                <%if (pelicula.Characters.length>0) {%>
+                <ul>
+                    <%pelicula.Characters.forEach(actor=>{%>
+                        <li><a href="/characters/<%=actor.id%>"><%=actor.nombre%></a></li>
+                    <%})%>
+                </ul>
+                <%}else {%>
+                    <p>No hay actores asociadas con la película</p>
+                <%}%>    
+            </div>
+        </div>
+        <a href="/movies/<%=pelicula.id%>/edit"><button>Modificar película</button> </a>
+        <form action="/movies/<%=pelicula.id%>?_method=delete" method="post">
+            <input type="submit" name="" id="" value="Eliminar pelicula">
+        </form>
+        <a href="/movies/"><button>Listado de películas</button> </a>
+
+        
+
+        
+    </main>
+    <%- include("../partials/footer") %>
+</body>
+</html>

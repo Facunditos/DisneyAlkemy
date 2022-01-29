@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head") %>
+
+<body>
+    <%- include("../partials/header") %>
+    <main>
+        <div class="busqueda">
+            <div class="busqueda-titulo">
+                <p><strong>Buscar películas por título y ordenar los resultados</strong></p>
+                <form action="/movies/searchTitulo" method="GET">
+                    <input type="text" placeholder="Título..." name="titulo">
+                    <select name="order"  class="" id="">
+                        <option value="asc">de forma ascendiente</option>
+                        <option value="desc">de forma descendiente</option>   
+                    </select>
+                    <input type="submit" value="Buscar">
+                </form>
+            </div>
+            <br>
+            <div class="busqueda-genero">
+                <p><strong>Buscar películas por género y ordenar los resultados</strong></p>
+                <form action="/movies/searchGenero" method="GET">
+                    <select name="genero_id"  class="" id="">
+                        <%generos.forEach(genero=>{%>
+                        <option value="<%=genero.id%>"><%=genero.nombre%></option>
+                        <%})%>
+                    </select>
+                    <select name="order"  class="" id="">
+                        <option value="asc">de forma ascendiente</option>
+                        <option value="desc">de forma descendiente</option>   
+                    </select>
+                    <input type="submit" value="Buscar">
+                </form>
+            </div>
+        </div>
+        <br>
+        <a href="/movies/new"><button>Crear película</button></a>
+        <a href="/movies"><button>Listar todas las películas</button></a>
+        <h1>Listado de películas:</h1>
+        <% if(peliculas.length==0) { %>
+            <p>En nuestros registros no tenemos ninguna película que cumpla con el criterio de búsqueda elegido  </p>
+        <%}%>
+        
+        <ul class="lista-general">
+            <%peliculas.forEach(pelicula=>{%>
+                <li>
+                    <h2><a href="/movies/<%=pelicula.id%>"><%=pelicula.titulo%></a> </h2>
+                    <p>Fecha de creación: <%=pelicula.fecha_de_creacion%></p>
+                    <figure class="lista-img">
+                        <img src="/img/movies-img/<%=pelicula.imagen%>" alt="">
+                    </figure>
+                </li>
+            <%})%>
+        </ul>
+    </main>
+    <%- include("../partials/footer") %>
+</body>
+</html>

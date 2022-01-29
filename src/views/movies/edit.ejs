@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head") %>
+
+<body>
+    <%- include("../partials/header") %>
+    <main>
+        <h1>Editar película</h1>
+        <figure class="lista-img">
+            <img src="/img/movies-img/<%=pelicula.imagen%>" alt="">
+        </figure>
+        <form action="/movies/<%= pelicula.id %>?_method=PUT" method="POST" enctype="multipart/form-data" >
+            <label for="">Suba una imagen si desea cambiarla</label>
+            <p><input type="file" name="imageMovie" class="" id="" value="<%=pelicula.imagen%>"></p>
+            <label for="">Título:</label>
+            <p><input type="text" name="titulo" value="<%=pelicula.titulo%>" class="" id="" required></p>
+            <label for="">Fecha de creación:</label>
+            <p><input type="date" name="fecha_de_creacion" value="<%=pelicula.fecha_de_creacion%>" class="" id="" required></p>
+            <label for="">Calificación:</label>
+            <p><input type="number" name="calificacion" value="<%=pelicula.calificacion%>" class="" id="" min="1" max="5" required></p>
+            <label for="">Género:</label>
+            <p><select name="genero_id"  class="" id="">
+                <option value="<%=pelicula.Genre.id%>"><%=pelicula.Genre.nombre%></option> 
+                <%generos.forEach(genero=>{%>
+                <option value="<%=genero.id%>"><%=genero.nombre%></option>
+                <%})%>
+            </select></p>
+            <input type="submit" value="Guardar cambios">  
+        </form>
+        <p><strong>Puedes modificar los actores asociados desde el CRUD de actores</strong></p>
+    </main>
+    <%- include("../partials/footer") %>
+</body>
+</html>

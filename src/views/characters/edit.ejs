@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head") %>
+
+<body>
+    <%- include("../partials/header") %>
+    <main>
+        <h1>Editar actor</h1>
+        <figure class="lista-img">
+            <img src="/img/characters-img/<%=actor.imagen%>" alt="">
+        </figure>
+        <form action="/characters/<%= actor.id %>?_method=PUT" method="POST" enctype="multipart/form-data" >
+            
+            <label for="">Suba una imagen si desea cambiarla</label>
+            <p><input type="file" name="imageCharacter" class="" id="" value="<%=actor.imagen%>"></p>
+            <label for="">Nombre:</label>
+            <p><input type="text" name="nombre" value="<%=actor.nombre%>" class="" id="" required></p>
+            <label for="">Edad:</label>
+            <p><input type="number" name="edad" value="<%=actor.edad%>" class="" id="" required></p>
+            <label for="">Peso:</label>
+            <p><input type="number" name="peso" value="<%=actor.peso%>" class="" id="" step="0.1" required></p>
+            <label for="">Historia:</label>
+            <p><textarea name="historia"  class="" id=""  rows="5" required ><%=actor.historia%></textarea></p>
+            <%if (actor.Movies[0]) {%>
+                <label for="">Película 1:</label>
+                <p><select name="pelicula_id"  class="" id="">
+                    <option value="<%=actor.Movies[0].id%>"><%=actor.Movies[0].titulo%></option>
+                    <option value="">Quitar película</option>
+                    <%peliculas.forEach(pelicula=>{%>
+                    <option value="<%=pelicula.id%>"><%=pelicula.titulo%></option>
+                    <%})%>
+                </select></p>
+            <%} else {%>
+                <label for="">Agregar película 1:</label>
+                <p><select name="pelicula_id"  class="" id="">
+                    <option value="">No agregar </option>
+                    <%peliculas.forEach(pelicula=>{%>
+                    <option value="<%=pelicula.id%>"><%=pelicula.titulo%></option>
+                    <%})%>
+                </select></p> 
+            <%}%>
+            <%if (actor.Movies[1]) {%>
+                <label for="">Película 2:</label>
+                <p><select name="pelicula_id"  class="" id="">
+                    <option value="<%=actor.Movies[1].id%>"><%=actor.Movies[1].titulo%></option>
+                    <option value="">Quitar película</option>
+                    <%peliculas.forEach(pelicula=>{%>
+                    <option value="<%=pelicula.id%>"><%=pelicula.titulo%></option>
+                    <%})%>
+                </select></p>
+            <%} else {%>
+                <label for="">Agregar película 2:</label>
+                <p><select name="pelicula_id"  class="" id="">
+                    <option value="">No agregar </option>
+                    <%peliculas.forEach(pelicula=>{%>
+                    <option value="<%=pelicula.id%>"><%=pelicula.titulo%></option>
+                    <%})%>
+                </select></p> 
+            <%}%>
+            <%if (actor.Movies[2]) {%>
+                <label for="">Película 3:</label>
+                <p><select name="pelicula_id"  class="" id="">
+                    <option value="<%=actor.Movies[2].id%>"><%=actor.Movies[2].titulo%></option>
+                    <option value="">Quitar película</option>
+                    <%peliculas.forEach(pelicula=>{%>
+                    <option value="<%=pelicula.id%>"><%=pelicula.titulo%></option>
+                    <%})%>
+                </select></p>
+            <%} else {%>
+                <label for="">Agregar película 3:</label>
+                <p><select name="pelicula_id"  class="" id="">
+                    <option value="">No agregar </option>
+                    <%peliculas.forEach(pelicula=>{%>
+                    <option value="<%=pelicula.id%>"><%=pelicula.titulo%></option>
+                    <%})%>
+                </select></p> 
+            <%}%>
+            <input type="submit" value="Guardar cambios">  
+        </form>
+    </main>
+    <%- include("../partials/footer") %>
+</body>
+</html>

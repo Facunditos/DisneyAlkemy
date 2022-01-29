@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head") %>
+
+<body>
+    <%- include("../partials/header") %>
+    <main>
+        <div class="busqueda">
+            <form action="/characters/searchNombre" method="GET">
+                <input type="text" placeholder="Nombre..." name="nombre">
+                <input type="submit" value="Buscar por nombre">
+            </form>
+            <form action="/characters/searchEdad" method="GET">
+                <input type="number" placeholder="Edad..." name="edad">
+                <input type="submit" value="Buscar por edad">
+            </form>
+            <form action="/characters/searchPelicula" method="GET">
+                <select name="pelicula_id"  class="" id="">
+                    <option value="">Elegir película</option>
+                    <%peliculas.forEach(pelicula=>{%>
+                    <option value="<%=pelicula.id%>"><%=pelicula.titulo%></option>
+                    <%})%>
+                </select>
+                <input type="submit" value="Buscar por película">
+            </form>
+        </div>
+        <br>
+        <a href="/characters/new"><button>Crear actor</button></a>
+        <a href="/characters"><button>Listar todos los actores</button></a>
+        <h1>Listado de actores:</h1>
+        <% if(actores.length==0) { %>
+            <p>En nuestros registros no tenemos ningún actor que cumpla con el criterio de búsqueda elegido  </p>
+        <%}%>
+        <ul class="lista-general">
+            <%actores.forEach(actor=>{%>
+                <li>
+                    <h2><a href="/characters/<%=actor.id%>"><%=actor.nombre%></a> </h2>
+                    <figure class="lista-img">
+                        <img src="/img/characters-img/<%=actor.imagen%>" alt="">
+                    </figure>
+                </li>
+            <%})%>
+        </ul>
+    </main>
+    <%- include("../partials/footer") %>
+</body>
+</html>
