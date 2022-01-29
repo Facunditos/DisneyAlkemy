@@ -3,8 +3,9 @@ const router=express.Router()
 
 const charactersController = require("../controllers/charactersController")
 const uploadImageCharacter=require("../middlewares/uploadImageCharacter")
+const verifyToken=require("../middlewares/verifyToken")
 
-router.get("/",charactersController.list)
+router.get("/",verifyToken,charactersController.list)
 router.get("/searchNombre",charactersController.searchNombre)
 router.get("/searchEdad",charactersController.searchEdad)
 router.get("/searchPelicula",charactersController.searchPelicula)

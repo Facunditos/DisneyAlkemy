@@ -1,4 +1,5 @@
 const sgMail = require("@sendgrid/mail")
+const jwt=require("jsonwebtoken")
 
 const authController={
     register:(req,res)=>{
@@ -22,10 +23,14 @@ const authController={
         
     },
     login:(req,res)=>{
-        res.send("loguear usuario")
+        res.render("auth/login")
     },
     auth:(req,res)=>{
-        res.send("se loguea el usuario")
+        const usuario=req.body
+        jwt.sign({usuario},"secreto",{expiresIn:'10min'},(eror,token)=>{
+            res.render("token",{token})
+        })
+       
     }
 }
 

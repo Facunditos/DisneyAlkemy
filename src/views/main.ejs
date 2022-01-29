@@ -10,8 +10,16 @@
         <br>
         <h2>¿Qué está buscando?</h2>
         <br>
-        <a href="/movies"><button>Películas</button></a>
-        <a href="/characters"><button>Actores</button></a>
+        <form action="/characters" method="get">
+            <label for="">Token:</label>
+            <p><input type="text" name="accesToken" class="" id="" required></p>
+            <input type="submit" value="Actores">  
+        </form>
+        <form action="/movies" method="get">
+            <label for="">Token:</label>
+            <p><input type="text" name="accesToken" class="" id="" required></p>
+            <input type="submit" value="Películas">  
+        </form>
         
     </main>
         <br>
